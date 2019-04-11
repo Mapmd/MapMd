@@ -2,5 +2,5 @@
     <string name="app_name">MapMD</string>
     <string name="tag_request">Authorization</string>
     <string name="pwd">Authorization</string>
-    <string name="url_repo">http://192.168.1.15:8211/tiles/styles/map/style.json</string>
+    <string name="url_repo">https://i.simpalsmedia.com/tiles/styles/map/style.json</string>
 </resources>
