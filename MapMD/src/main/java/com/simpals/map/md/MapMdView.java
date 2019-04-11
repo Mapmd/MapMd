@@ -46,6 +46,9 @@ public class MapMdView extends MapView implements OnMapReadyCallback {
     @Override
     public void onMapReady(@NonNull MapboxMap mapboxMap) {
        // String url = ctx.getString(R.string.url_repo);
+        mapboxMap.getUiSettings().setAttributionEnabled(false);
+       // mapboxMap.getUiSettings().setLogoEnabled(false);
+
         mapboxMap.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo)), new Style.OnStyleLoaded() {
             @Override
             public void onStyleLoaded(@NonNull Style style) {
