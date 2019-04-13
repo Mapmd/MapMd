@@ -1,4 +1,4 @@
-# MapMd  [![](https://jitpack.io/v/Mapmd/MapMd.svg)](https://jitpack.io/#Mapmd/MapMd)
+# MapMd SDK for Android  [![](https://jitpack.io/v/Mapmd/MapMd.svg)](https://jitpack.io/#Mapmd/MapMd)
 
 <a href="https://play.google.com/store/apps/details?id=md.point.map">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Play store" height="90"></a>
