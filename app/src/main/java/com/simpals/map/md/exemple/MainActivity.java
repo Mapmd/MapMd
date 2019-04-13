@@ -3,15 +3,15 @@ package com.simpals.map.md.exemple;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
-import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
-import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
-import com.mapbox.mapboxsdk.maps.Style;
-import com.mapbox.mapboxsdk.style.sources.VectorSource;
 import com.simpals.map.md.MapMd;
 import com.simpals.map.md.MapMdView;
 import com.simpals.map.md.listener.OnMapMdReadyCallback;
+import com.simpals.map.md.network.query.QuerySearch;
+
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCallback {
      private MapMdView mapView;
@@ -45,6 +45,22 @@ public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCall
 
             }
         });*/
+        QuerySearch search =new QuerySearch(new QuerySearch.OnCallbackResult() {
+            @Override
+            public void onSuccess(JSONObject result) {
+                Log.d("dataasas",result.toString());
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+
+            }
+        });
+
+        search.sendRequest("aaa");
+      /* new MainPresenterImpl(this, new GetNoticeIntractorImpl()).requestDataFromServer();*/
+       // presenter.requestDataFromServer();
+
     }
 
     @Override
@@ -93,4 +109,16 @@ public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCall
     public void onMapReady(@NonNull MapboxMap mapMd) {
 
     }
+
+    /*private void getSearch(){
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel.class);
+        viewModel.loginResponse().observe(this, new Observer<ApiResponse>() {
+            @Override
+            public void onChanged(@Nullable ApiResponse apiResponse) {
+                consumeResponse(apiResponse);
+            }
+        });
+
+        viewModel.hitLoginApi(phoneNo.getText().toString(), password.getText().toString());
+    }*/
 }

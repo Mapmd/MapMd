@@ -1,7 +1,6 @@
 package com.simpals.map.md;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -11,15 +10,20 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
-import com.mapbox.mapboxsdk.style.sources.VectorSource;
 import com.simpals.map.md.listener.OnMapMdReadyCallback;
+import com.simpals.map.md.utils.MapGravity;
+
+import timber.log.Timber;
 
 import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
+import static com.simpals.map.md.utils.StaticsFunctions.MOLDOVABOUNDS;
+
 
 public class MapMdView extends MapView implements OnMapReadyCallback {
     //  private MapboxMap mMapboxMap = null;
     private OnMapMdReadyCallback mMapReadyCallback;
     private Context ctx;
+    private MapboxMap mapMd;
 
     public MapMdView(@NonNull Context context) {
         super(context);
@@ -45,10 +49,8 @@ public class MapMdView extends MapView implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(@NonNull MapboxMap mapboxMap) {
-       // String url = ctx.getString(R.string.url_repo);
-        mapboxMap.getUiSettings().setAttributionEnabled(false);
-       // mapboxMap.getUiSettings().setLogoEnabled(false);
-
+        this.mapMd = mapboxMap;
+        setInitMapMd(mapboxMap);
         mapboxMap.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo)), new Style.OnStyleLoaded() {
             @Override
             public void onStyleLoaded(@NonNull Style style) {
@@ -56,8 +58,55 @@ public class MapMdView extends MapView implements OnMapReadyCallback {
             }
         });
         if (mMapReadyCallback != null) mMapReadyCallback.onMapReady(mapboxMap);
+    }
+
+    private void setInitMapMd(MapboxMap mapboxMap){
+        mapboxMap.getUiSettings().setAttributionEnabled(false);
+        mapboxMap.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo)), new Style.OnStyleLoaded() {
+            @Override
+            public void onStyleLoaded(@NonNull Style style) {
+
+            }
+        });
+        mapboxMap.setLatLngBoundsForCameraTarget(MOLDOVABOUNDS);
+    }
+
+    public void setLogoTopLeft() {
+        if (mapMd != null)
+            setGravity(MapGravity.TOPLEFT.toGravity());
+        else
+            Timber.d("error init map");
 
     }
 
+    public void setLogoTopRight() {
+        if (mapMd != null)
+            setGravity(MapGravity.TOPRIGHT.toGravity());
+        else
+            Timber.d("error init map");
+    }
 
+    public void setLogoBottomRight() {
+        if (mapMd != null)
+            setGravity(MapGravity.BOTTOMRIGHT.toGravity());
+        else
+            Timber.d("error init map");
+
+    }
+
+    public void setLogoBottomLeft() {
+        if (mapMd != null)
+            setGravity(MapGravity.BOTTOMLEFT.toGravity());
+        else
+            Timber.d("error init map");
+
+    }
+
+    private void setGravity(int gravity) {
+        mapMd.getUiSettings().setLogoGravity(gravity);
+    }
+
+    public MapboxMap getMapMd() {
+        return mapMd;
+    }
 }
