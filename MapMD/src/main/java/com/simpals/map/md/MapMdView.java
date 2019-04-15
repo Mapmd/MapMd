@@ -18,7 +18,6 @@ import timber.log.Timber;
 import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
 import static com.simpals.map.md.utils.StaticsFunctions.MOLDOVABOUNDS;
 
-
 public class MapMdView extends MapView implements OnMapReadyCallback {
     //  private MapboxMap mMapboxMap = null;
     private OnMapMdReadyCallback mMapReadyCallback;
@@ -51,22 +50,13 @@ public class MapMdView extends MapView implements OnMapReadyCallback {
     public void onMapReady(@NonNull MapboxMap mapboxMap) {
         this.mapMd = mapboxMap;
         setInitMapMd(mapboxMap);
-        mapboxMap.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo)), new Style.OnStyleLoaded() {
-            @Override
-            public void onStyleLoaded(@NonNull Style style) {
-
-            }
-        });
         if (mMapReadyCallback != null) mMapReadyCallback.onMapReady(mapboxMap);
     }
 
-    private void setInitMapMd(MapboxMap mapboxMap){
+    private void setInitMapMd(MapboxMap mapboxMap) {
         mapboxMap.getUiSettings().setAttributionEnabled(false);
-        mapboxMap.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo)), new Style.OnStyleLoaded() {
-            @Override
-            public void onStyleLoaded(@NonNull Style style) {
-
-            }
+        mapboxMap.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo)), style -> {
+            // addStyle(style);
         });
         mapboxMap.setLatLngBoundsForCameraTarget(MOLDOVABOUNDS);
     }
@@ -109,4 +99,6 @@ public class MapMdView extends MapView implements OnMapReadyCallback {
     public MapboxMap getMapMd() {
         return mapMd;
     }
+
+
 }
