@@ -1,5 +1,6 @@
 package com.simpals.map.md.mvp.search;
 
+import com.google.gson.JsonObject;
 import com.simpals.map.md.mvp.Callback;
 
 import org.json.JSONObject;
@@ -26,7 +27,7 @@ public class SearchPresenterImpl implements Callback.presenterSearch, GetMethod.
     }
 
     @Override
-    public void onFinished(JSONObject searchData) {
+    public void onFinished(JsonObject searchData) {
         if (searchView != null) {
             searchView.setDataSearchView(searchData);
         }

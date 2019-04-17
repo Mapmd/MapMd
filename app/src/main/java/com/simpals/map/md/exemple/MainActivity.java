@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.google.gson.JsonObject;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.simpals.map.md.MapMd;
 import com.simpals.map.md.MapMdView;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCall
     private void searchRequest(){
         QuerySearch search =new QuerySearch(new QuerySearch.OnCallbackResult() {
             @Override
-            public void onSuccess(JSONObject result) {
+            public void onSuccess(JsonObject result) {
                 Log.d("dataasas",result.toString());
             }
 
@@ -64,8 +65,8 @@ public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCall
             }
         });
 
-        search.sendRequest("aaa");
-        search.onCancelRequest();
+        search.sendRequest("daci");
+       // search.onCancelRequest();
     }
 
     @Override

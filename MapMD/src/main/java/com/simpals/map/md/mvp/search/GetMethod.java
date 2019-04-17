@@ -1,10 +1,12 @@
 package com.simpals.map.md.mvp.search;
 
+import com.google.gson.JsonObject;
+
 import org.json.JSONObject;
 
 public interface GetMethod {
     interface OnFinishedListener {
-        void onFinished(JSONObject searchData);
+        void onFinished(JsonObject searchData);
 
         void onFailure(Throwable t);
     }

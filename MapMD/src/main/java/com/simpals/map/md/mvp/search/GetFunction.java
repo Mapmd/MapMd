@@ -2,6 +2,7 @@ package com.simpals.map.md.mvp.search;
 
 import android.support.annotation.NonNull;
 
+import com.google.gson.JsonObject;
 import com.simpals.map.md.mvp.RetrofitInstance;
 import com.simpals.map.md.network.ApiMapMd;
 
@@ -12,21 +13,21 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class GetFunction implements GetMethod {
-    private Call<JSONObject> call;
+    private Call<JsonObject> call;
 
     @Override
     public void getSearch(final OnFinishedListener onFinishedListener, String query) {
         ApiMapMd service = RetrofitInstance.getRetrofitInstance().create(ApiMapMd.class);
         call = service.getStreet(query);
-        call.enqueue(new Callback<JSONObject>() {
+        call.enqueue(new Callback<JsonObject>() {
             @Override
-            public void onResponse(@NonNull Call<JSONObject> call, @NonNull Response<JSONObject> response) {
+            public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
                 onFinishedListener.onFinished(response.body());
 
             }
 
             @Override
-            public void onFailure(@NonNull Call<JSONObject> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
                 onFinishedListener.onFailure(t);
             }
         });
@@ -38,7 +39,7 @@ public class GetFunction implements GetMethod {
     }
 
     public void onCancelRequest() {
-        if (call != null)
+        if (call != null && call.isExecuted())
             call.cancel();
     }
 }

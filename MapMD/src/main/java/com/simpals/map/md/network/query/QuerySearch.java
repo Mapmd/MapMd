@@ -1,5 +1,6 @@
 package com.simpals.map.md.network.query;
 
+import com.google.gson.JsonObject;
 import com.simpals.map.md.mvp.Callback;
 import com.simpals.map.md.mvp.search.CallbackResponse;
 import com.simpals.map.md.mvp.search.GetFunction;
@@ -16,7 +17,7 @@ public class QuerySearch implements CallbackResponse.SearchView {
     }
 
     @Override
-    public void setDataSearchView(JSONObject data) {
+    public void setDataSearchView(JsonObject data) {
         if (mListener != null)
             mListener.onSuccess(data);
 
@@ -38,7 +39,8 @@ public class QuerySearch implements CallbackResponse.SearchView {
     }
 
     public void onCancelRequest() {
-        presenter.onDestroy();
+        if (presenter != null)
+            presenter.onDestroy();
     }
 
     public void registerOnSearchListener(OnCallbackResult mListener) {
@@ -46,7 +48,7 @@ public class QuerySearch implements CallbackResponse.SearchView {
     }
 
     public interface OnCallbackResult {
-        void onSuccess(JSONObject result);
+        void onSuccess(JsonObject result);
 
         void onFailure(Throwable throwable);
     }
