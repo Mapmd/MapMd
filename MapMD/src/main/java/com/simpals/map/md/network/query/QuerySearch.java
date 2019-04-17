@@ -37,6 +37,10 @@ public class QuerySearch implements CallbackResponse.SearchView {
         }
     }
 
+    public void onCancelRequest() {
+        presenter.onDestroy();
+    }
+
     public void registerOnSearchListener(OnCallbackResult mListener) {
         this.mListener = mListener;
     }

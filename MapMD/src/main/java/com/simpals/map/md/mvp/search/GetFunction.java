@@ -12,10 +12,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class GetFunction implements GetMethod {
+    private Call<JSONObject> call;
+
     @Override
     public void getSearch(final OnFinishedListener onFinishedListener, String query) {
         ApiMapMd service = RetrofitInstance.getRetrofitInstance().create(ApiMapMd.class);
-        Call<JSONObject> call = service.getStreet(query);
+        call = service.getStreet(query);
         call.enqueue(new Callback<JSONObject>() {
             @Override
             public void onResponse(@NonNull Call<JSONObject> call, @NonNull Response<JSONObject> response) {
@@ -33,5 +35,10 @@ public class GetFunction implements GetMethod {
     @Override
     public void getSearch1(OnFinishedListener onFinishedListener) {
 
+    }
+
+    public void onCancelRequest() {
+        if (call != null)
+            call.cancel();
     }
 }

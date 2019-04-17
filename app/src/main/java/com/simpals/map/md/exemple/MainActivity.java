@@ -45,6 +45,13 @@ public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCall
 
             }
         });*/
+
+      /* new MainPresenterImpl(this, new GetNoticeIntractorImpl()).requestDataFromServer();*/
+       // presenter.requestDataFromServer();
+        searchRequest();
+    }
+
+    private void searchRequest(){
         QuerySearch search =new QuerySearch(new QuerySearch.OnCallbackResult() {
             @Override
             public void onSuccess(JSONObject result) {
@@ -58,9 +65,7 @@ public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCall
         });
 
         search.sendRequest("aaa");
-      /* new MainPresenterImpl(this, new GetNoticeIntractorImpl()).requestDataFromServer();*/
-       // presenter.requestDataFromServer();
-
+        search.onCancelRequest();
     }
 
     @Override
