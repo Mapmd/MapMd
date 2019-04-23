@@ -2,11 +2,15 @@ package com.simpals.map.md.mvp.search;
 
 import com.google.gson.JsonObject;
 import com.simpals.map.md.mvp.Callback;
+import com.simpals.map.md.network.query.QuerySearch;
 
 import org.json.JSONObject;
 
-public class SearchPresenterImpl implements Callback.presenterSearch, GetMethod.OnFinishedListener {
+import java.util.Map;
+
+public class SearchPresenterImpl implements Callback.presenterSearch {
     private CallbackResponse.SearchView searchView;
+    private CallbackResponse.LocationView locationView;
     private GetMethod getMethod;
 
     public SearchPresenterImpl(CallbackResponse.SearchView searchView, GetMethod onListener) {
@@ -22,22 +26,49 @@ public class SearchPresenterImpl implements Callback.presenterSearch, GetMethod.
 
     @Override
     public void requestSearch(String query) {
-        getMethod.getSearch(this, query);
+        getMethod.getSearch(new GetMethod.OnFinishedListener() {
+
+            @Override
+            public void onFinished(JsonObject searchData) {
+                if (searchView != null) {
+                    searchView.setDataSearchView(searchData, QuerySearch.TYPESEARCH);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                if (searchView != null) {
+                    searchView.onResponseSearchFailure(t, QuerySearch.TYPESEARCH);
+                }
+            }
+        }, query);
 
     }
 
     @Override
-    public void onFinished(JsonObject searchData) {
-        if (searchView != null) {
-            searchView.setDataSearchView(searchData);
-        }
+    public void getLocation(String type, Map<String, String> param) {
+        getMethod.getLocation(new GetMethod.OnLocationListener() {
 
+            @Override
+            public void onFinished(JsonObject searchData) {
+                if (searchView != null)
+                    searchView.setDataSearchView(searchData, QuerySearch.TYPELOCATION);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                if (searchView != null)
+                    searchView.onResponseSearchFailure(t, QuerySearch.TYPELOCATION);
+            }
+        }, type, param);
     }
 
-    @Override
-    public void onFailure(Throwable t) {
-        if (searchView != null) {
-            searchView.onResponseSearchFailure(t);
-        }
+    public void registerView(CallbackResponse.LocationView locationView) {
+        this.locationView = locationView;
+    }
+
+    public void registerView(CallbackResponse.SearchView searchView) {
+        this.searchView = searchView;
     }
 }

@@ -14,6 +14,9 @@ import com.simpals.map.md.network.query.QuerySearch;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCallback {
      private MapMdView mapView;
    // MapView mapView;
@@ -22,7 +25,7 @@ public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCall
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MapMd.getInstanceMap(this, "f9302b9f-7e97-471b-85a3-2754b1466552");
+        MapMd.getInstanceMap(this, "2582e284-1087-421c-baaa-94020703c462");
         setContentView(R.layout.activity_main);
         mapView = (MapMdView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
@@ -49,14 +52,31 @@ public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCall
 
       /* new MainPresenterImpl(this, new GetNoticeIntractorImpl()).requestDataFromServer();*/
        // presenter.requestDataFromServer();
-        searchRequest();
+       // searchRequest();
+        searchLocation();
     }
 
+    private void searchLocation(){
+        QuerySearch search = new QuerySearch(new QuerySearch.OnCallbackLocation() {
+            @Override
+            public void onSuccess(JsonObject result) {
+            Log.e("response",result.toString());
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                throwable.printStackTrace();
+            }
+        });
+        Map m = new HashMap<>();
+        m.put("id","3157469661");
+        search.getLocationRequest("city",m);
+    }
     private void searchRequest(){
         QuerySearch search =new QuerySearch(new QuerySearch.OnCallbackResult() {
             @Override
             public void onSuccess(JsonObject result) {
-                Log.d("dataasas",result.toString());
+                Log.d("dacia",result.toString());
             }
 
             @Override
