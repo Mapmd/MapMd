@@ -5,11 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.simpals.map.md.MapMd;
 import com.simpals.map.md.MapMdView;
 import com.simpals.map.md.listener.OnMapMdReadyCallback;
+import com.simpals.map.md.network.query.QueryCategory;
 import com.simpals.map.md.network.query.QuerySearch;
 
 import org.json.JSONObject;
@@ -17,9 +19,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCallback {
-     private MapMdView mapView;
-   // MapView mapView;
+public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallback {
+    private MapMdView mapView;
+    // MapView mapView;
     private MapMd mapMd;
 
     @Override
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCall
         setContentView(R.layout.activity_main);
         mapView = (MapMdView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
-        mapView.initMap(this,this);
+        mapView.initMap(this, this);
       /*  mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull MapboxMap mapboxMap) {
@@ -50,17 +52,19 @@ public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCall
             }
         });*/
 
-      /* new MainPresenterImpl(this, new GetNoticeIntractorImpl()).requestDataFromServer();*/
-       // presenter.requestDataFromServer();
-       // searchRequest();
-        searchLocation();
+        /* new MainPresenterImpl(this, new GetNoticeIntractorImpl()).requestDataFromServer();*/
+        // presenter.requestDataFromServer();
+        // searchRequest();
+        // searchLocation();
+       // getAllCategory();
+        getItemCategory("179");
     }
 
-    private void searchLocation(){
+    private void searchLocation() {
         QuerySearch search = new QuerySearch(new QuerySearch.OnCallbackLocation() {
             @Override
             public void onSuccess(JsonObject result) {
-            Log.e("response",result.toString());
+                Log.e("response", result.toString());
             }
 
             @Override
@@ -69,14 +73,48 @@ public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCall
             }
         });
         Map m = new HashMap<>();
-        m.put("id","3157469661");
-        search.getLocationRequest("city",m);
+        m.put("id", "3157469661");
+        search.getLocationRequest("city", m);
     }
-    private void searchRequest(){
-        QuerySearch search =new QuerySearch(new QuerySearch.OnCallbackResult() {
+
+    private void getAllCategory() {
+        QueryCategory search = new QueryCategory(new QueryCategory.OnCallbackResult() {
+
+            @Override
+            public void onSuccess(JsonArray result, int statusCode) {
+                Log.d("succes " + statusCode, result.toString());
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                Log.e("succes ", throwable.toString());
+            }
+        });
+
+        search.getAllCategory();
+    }
+    private void getItemCategory(String id) {
+        QueryCategory search = new QueryCategory(new QueryCategory.OnCallbackResultItem() {
+
+            @Override
+            public void onSuccess(JsonObject result, int statusCode) {
+                Log.d("succes " + statusCode, result.toString());
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                Log.e("succes ", throwable.toString());
+            }
+        });
+
+        search.getListCompanies(id);
+    }
+
+    private void searchRequest() {
+        QuerySearch search = new QuerySearch(new QuerySearch.OnCallbackResult() {
             @Override
             public void onSuccess(JsonObject result) {
-                Log.d("dacia",result.toString());
+                Log.d("dacia", result.toString());
             }
 
             @Override
@@ -86,7 +124,7 @@ public class MainActivity extends AppCompatActivity  implements OnMapMdReadyCall
         });
 
         search.sendRequest("daci");
-       // search.onCancelRequest();
+        // search.onCancelRequest();
     }
 
     @Override

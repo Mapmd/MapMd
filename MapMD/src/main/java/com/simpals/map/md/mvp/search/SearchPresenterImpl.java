@@ -2,15 +2,15 @@ package com.simpals.map.md.mvp.search;
 
 import com.google.gson.JsonObject;
 import com.simpals.map.md.mvp.Callback;
+import com.simpals.map.md.mvp.CallbackResponse;
+import com.simpals.map.md.mvp.GetMethod;
 import com.simpals.map.md.network.query.QuerySearch;
-
-import org.json.JSONObject;
 
 import java.util.Map;
 
 public class SearchPresenterImpl implements Callback.presenterSearch {
     private CallbackResponse.SearchView searchView;
-    private CallbackResponse.LocationView locationView;
+   // private CallbackResponse.LocationView locationView;
     private GetMethod getMethod;
 
     public SearchPresenterImpl(CallbackResponse.SearchView searchView, GetMethod onListener) {
@@ -64,9 +64,9 @@ public class SearchPresenterImpl implements Callback.presenterSearch {
         }, type, param);
     }
 
-    public void registerView(CallbackResponse.LocationView locationView) {
+   /* public void registerView(CallbackResponse.LocationView locationView) {
         this.locationView = locationView;
-    }
+    }*/
 
     public void registerView(CallbackResponse.SearchView searchView) {
         this.searchView = searchView;

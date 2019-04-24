@@ -2,11 +2,9 @@ package com.simpals.map.md.network.query;
 
 import com.google.gson.JsonObject;
 import com.simpals.map.md.mvp.Callback;
-import com.simpals.map.md.mvp.search.CallbackResponse;
-import com.simpals.map.md.mvp.search.GetFunction;
+import com.simpals.map.md.mvp.CallbackResponse;
+import com.simpals.map.md.mvp.GetFunction;
 import com.simpals.map.md.mvp.search.SearchPresenterImpl;
-
-import org.json.JSONObject;
 
 import java.util.Map;
 

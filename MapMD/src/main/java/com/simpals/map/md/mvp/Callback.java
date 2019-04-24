@@ -8,4 +8,11 @@ public class Callback {
         void requestSearch(String query);
         void getLocation(String type, Map<String,String> param);
     }
+
+    public interface presenterCategory{
+        void onDestroy();
+        void requestAllCategory();
+        void requestPointItem(String categoryId);
+    }
+
 }
