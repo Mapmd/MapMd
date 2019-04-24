@@ -57,13 +57,13 @@ public class QueryCategory implements CallbackResponse.CategoryView {
 
     @Override
     public void setDataItemPointView(JsonObject value, int statusCode) {
-        if (mListener != null)
+        if (mListenerItem != null)
             mListenerItem.onSuccess(value, statusCode);
     }
 
     @Override
     public void onResponsePointFailure(Throwable throwable) {
-        if (mListener != null)
+        if (mListenerItem != null)
             mListenerItem.onFailure(throwable);
     }
 
