@@ -3,7 +3,7 @@
 <a href="https://play.google.com/store/apps/details?id=md.point.map">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Play store" height="90"></a>
 
-Current Release: **0.0.9 (2019)**
+Current Release: **0.0.15 (2019)**
 
 **Gradle dependency**
 ```groovy
@@ -20,7 +20,7 @@ dependencies {
 Be sure to replace `<VERSION>` with the last release version above.
 
 
-**Platform or API Level (API level 17 = Platform 4.2)**
+**Platform or API Level (API level 16 = Platform 4.1)**
 ```xml
 <platform>17</platform>
 ```
