@@ -14,5 +14,10 @@ public class Callback {
         void requestAllCategory();
         void requestPointItem(String categoryId);
     }
+    public interface presenterRoutes{
+        void onDestroy();
+        void requestRoutes(String cityId);
+        void requestNear(String lat,String lon);
+    }
 
 }

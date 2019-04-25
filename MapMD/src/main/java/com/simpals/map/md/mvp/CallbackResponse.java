@@ -16,4 +16,11 @@ public class CallbackResponse {
         void onResponsePointFailure(Throwable throwable);
         void onResponseCategoryFailure(Throwable throwable);
     }
+
+    public interface RoutesView {
+        void setDataRoutesView(JsonObject data,int statusCode);
+        void setDataNearView(JsonObject value,int statusCode);
+        void onResponseRouteFailure(Throwable throwable);
+        void onResponseNearFailure(Throwable throwable);
+    }
 }

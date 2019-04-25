@@ -14,7 +14,9 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 import static com.simpals.map.md.utils.Urls.ALLCATEGORIES;
+import static com.simpals.map.md.utils.Urls.GET_NEAR;
 import static com.simpals.map.md.utils.Urls.GET_POINTS_FOR_CATEGORY;
+import static com.simpals.map.md.utils.Urls.GET_ROUTES;
 import static com.simpals.map.md.utils.Urls.POINTSTREET;
 import static com.simpals.map.md.utils.Urls.SEARCH_STREET;
 
@@ -30,4 +32,14 @@ public interface ApiMapMd {
 
     @GET(GET_POINTS_FOR_CATEGORY)
     Call<JsonObject> getPoint(@Query("parent_id") String parentId);
+
+  /*  @GET("ru/map/webmap/route")
+    Call<RequestCoordinate> getPointRoute(@Query("rid") String idRout);*/
+
+    @GET(GET_ROUTES)
+    Call<JsonObject> getRoute(@Query("city_id") String cityId);
+
+    @GET(GET_NEAR)
+    Call<JsonObject> getNear(@Query("lat") String lat, @Query("lon") String lon);
+
 }

@@ -13,6 +13,11 @@ public interface GetMethod {
 
         void onFailure(Throwable t);
     }
+    interface OnSuccesListener {
+        void onFinished(JsonObject searchData, int statusCode);
+
+        void onFailure(Throwable t);
+    }
 
     interface OnLocationListener {
         void onFinished(JsonObject searchData);
@@ -33,6 +38,10 @@ public interface GetMethod {
     }
 
     void getSearch(OnFinishedListener onFinishedListener, String query);
+
+    void getRoutes(OnSuccesListener onRouteListener, String idCities);
+
+    void getNear(OnSuccesListener onNearListener, String lat, String lon);
 
     void getPointItem(OnPointItemListener onFinishedListener, String CategoryId);
 
