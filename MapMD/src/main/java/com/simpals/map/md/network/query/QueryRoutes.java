@@ -1,5 +1,7 @@
 package com.simpals.map.md.network.query;
 
+import android.app.DownloadManager;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.simpals.map.md.mvp.Callback;
@@ -25,6 +27,10 @@ public class QueryRoutes implements CallbackResponse.RoutesView {
 
     public QueryRoutes(OnCallbackNearLocationArray listener) {
         this.mListenerLocationArray = listener;
+    }
+
+    public QueryRoutes(){
+
     }
 
 
