@@ -23,6 +23,9 @@ public class MapMdView extends MapView implements OnMapReadyCallback {
     private OnMapMdReadyCallback mMapReadyCallback;
     private Context ctx;
     private MapboxMap mapMd;
+    private int type = 0;
+    public static int TYPE_SATELLITE = 1;
+    public static int TYPE_DEFAULT = 0;
 
     public MapMdView(@NonNull Context context) {
         super(context);
@@ -46,16 +49,35 @@ public class MapMdView extends MapView implements OnMapReadyCallback {
         getMapAsync(this);
     }
 
+    public void initMap(Context ctx, OnMapMdReadyCallback mMapReadyCallback, int type) {
+        this.ctx = ctx;
+        this.type = type;
+        this.mMapReadyCallback = mMapReadyCallback;
+        getMapAsync(this);
+    }
+
     @Override
     public void onMapReady(@NonNull MapboxMap mapboxMap) {
         this.mapMd = mapboxMap;
-        setInitMapMd(mapboxMap);
+        if (type == TYPE_DEFAULT) {
+            setInitMapMd(mapboxMap);
+        } else {
+            setInitMapMdSatellite(mapboxMap);
+        }
         if (mMapReadyCallback != null) mMapReadyCallback.onMapReady(mapboxMap);
     }
 
     private void setInitMapMd(MapboxMap mapboxMap) {
         mapboxMap.getUiSettings().setAttributionEnabled(false);
         mapboxMap.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo)), style -> {
+            // addStyle(style);
+        });
+        mapboxMap.setLatLngBoundsForCameraTarget(MOLDOVABOUNDS);
+    }
+
+    private void setInitMapMdSatellite(MapboxMap mapboxMap) {
+        mapboxMap.getUiSettings().setAttributionEnabled(false);
+        mapboxMap.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo_satelite)), style -> {
             // addStyle(style);
         });
         mapboxMap.setLatLngBoundsForCameraTarget(MOLDOVABOUNDS);
@@ -90,6 +112,13 @@ public class MapMdView extends MapView implements OnMapReadyCallback {
         else
             Timber.d("error init map");
 
+    }
+
+    public void setStyleSatellite(){
+        mapMd.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo_satelite)));
+    }
+    public void setStyleMapMd(){
+        mapMd.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo)));
     }
 
     private void setGravity(int gravity) {

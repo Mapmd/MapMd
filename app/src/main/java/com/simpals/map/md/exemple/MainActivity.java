@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
     }
 
     private void getRoute(){
-        QueryRoutes q = new QueryRoutes(new QueryRoutes.OnCallbackResult() {
+        QueryRoutes q = new QueryRoutes(new QueryRoutes.OnCallbackRoutesResult() {
             @Override
             public void onSuccess(JsonObject result, int statusCode) {
                 Log.e("onSuccess", result.toString());
@@ -187,6 +187,8 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
 
     @Override
     public void onMapReady(@NonNull MapboxMap mapMd) {
+
+       // mapView.setStyleSatellite();
 
     }
 
