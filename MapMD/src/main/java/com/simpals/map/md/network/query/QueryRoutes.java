@@ -29,7 +29,7 @@ public class QueryRoutes implements CallbackResponse.RoutesView {
         this.mListenerLocationArray = listener;
     }
 
-    public QueryRoutes(){
+    public QueryRoutes() {
 
     }
 
@@ -104,16 +104,16 @@ public class QueryRoutes implements CallbackResponse.RoutesView {
             mListenerLocationArray.onFailure(throwable);
     }
 
-    public void registerOnNearListener(OnCallbackNearResult mListener) {
+    public void setOnNearListener(OnCallbackNearResult mListener) {
         this.mListenerNear = mListener;
     }
 
-    public void registerOnNearListener(OnCallbackRoutesResult mListener) {
+    public void setOnRoutesListener(OnCallbackRoutesResult mListener) {
         this.mListenerRoutes = mListener;
     }
 
-    public void registerOnRoutesListener(OnCallbackNearLocationArray mListener) {
-        this.mListenerLocationArray = mListener;
+    public void setOnNearLocationListener(OnCallbackNearLocationArray mListener) {
+        this.mListenerLocationArray = mListener; //registerOnNearListener
     }
 
     public interface OnCallbackRoutesResult {
