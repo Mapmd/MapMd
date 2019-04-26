@@ -20,7 +20,9 @@ public class CallbackResponse {
     public interface RoutesView {
         void setDataRoutesView(JsonObject data,int statusCode);
         void setDataNearView(JsonObject value,int statusCode);
+        void setDataNearViewMyLocation(JsonArray data,int code);
         void onResponseRouteFailure(Throwable throwable);
         void onResponseNearFailure(Throwable throwable);
+        void onResponseNearMyLocationFailure(Throwable throwable);
     }
 }

@@ -4,8 +4,6 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.simpals.map.md.mvp.GetMethod;
-import com.simpals.map.md.mvp.RetrofitInstance;
 import com.simpals.map.md.network.ApiMapMd;
 
 import java.util.Map;
@@ -34,6 +32,72 @@ public class GetFunction implements GetMethod {
             }
         });
     }
+
+    @Override
+    public void getRoutes(OnSuccessListener onRouteListener, String idCities) {
+        ApiMapMd service = RetrofitInstance.getRetrofitInstance().create(ApiMapMd.class);
+        call = service.getRoute(idCities);
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
+                if (onRouteListener != null) {
+                    onRouteListener.onFinished(response.body(), response.code());
+                }
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
+                if (onRouteListener != null) {
+                    onRouteListener.onFailure(t);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getNear(OnSuccessListener onNearListener, String lat, String lon) {
+        ApiMapMd service = RetrofitInstance.getRetrofitInstance().create(ApiMapMd.class);
+        call = service.getNear(lat, lon);
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
+                if (onNearListener != null) {
+                    onNearListener.onFinished(response.body(), response.code());
+                }
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
+                if (onNearListener != null) {
+                    onNearListener.onFailure(t);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getNearMyLocation(OnSuccessArrayListener onSuccessArrayListener, String pointX, String pointY) {
+        ApiMapMd service = RetrofitInstance.getRetrofitInstance().create(ApiMapMd.class);
+        Call<JsonArray> call = service.getRouteMyLocation(pointX,pointY);
+        call.enqueue(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(@NonNull Call<JsonArray> call, @NonNull Response<JsonArray> response) {
+                if (onSuccessArrayListener != null) {
+                    onSuccessArrayListener.onFinished(response.body(), response.code());
+                }
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<JsonArray> call, @NonNull Throwable t) {
+                if (onSuccessArrayListener != null)
+                    onSuccessArrayListener.onFailure(t);
+            }
+        });
+    }
+
 
     @Override
     public void getPointItem(OnPointItemListener onFinishedListener, String CategoryId) {

@@ -42,4 +42,7 @@ public interface ApiMapMd {
     @GET(GET_NEAR)
     Call<JsonObject> getNear(@Query("lat") String lat, @Query("lon") String lon);
 
+    @GET("ru/map/webmap/near_routes")
+    Call<JsonArray> getRouteMyLocation(@Query("x") String x, @Query("y") String y); //x=47.0229,28.8353,y=47.0229,28.8353
+
 }

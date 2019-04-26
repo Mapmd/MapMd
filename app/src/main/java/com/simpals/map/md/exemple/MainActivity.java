@@ -12,6 +12,7 @@ import com.simpals.map.md.MapMd;
 import com.simpals.map.md.MapMdView;
 import com.simpals.map.md.listener.OnMapMdReadyCallback;
 import com.simpals.map.md.network.query.QueryCategory;
+import com.simpals.map.md.network.query.QueryRoutes;
 import com.simpals.map.md.network.query.QuerySearch;
 
 import org.json.JSONObject;
@@ -57,9 +58,24 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
         // searchRequest();
         // searchLocation();
        // getAllCategory();
-        getItemCategory("179");
+        //getItemCategory("179");
+       // getRoute();
     }
 
+    private void getRoute(){
+        QueryRoutes q = new QueryRoutes(new QueryRoutes.OnCallbackResult() {
+            @Override
+            public void onSuccess(JsonObject result, int statusCode) {
+                Log.e("onSuccess", result.toString());
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                Log.e("onFailure", throwable.toString());
+            }
+        });
+        q.getRoute(null);
+    }
     private void searchLocation() {
         QuerySearch search = new QuerySearch(new QuerySearch.OnCallbackLocation() {
             @Override

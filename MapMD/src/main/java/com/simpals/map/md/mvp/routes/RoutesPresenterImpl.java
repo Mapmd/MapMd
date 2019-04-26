@@ -23,7 +23,7 @@ public class RoutesPresenterImpl implements Callback.presenterRoutes {
 
     @Override
     public void requestRoutes(String cityId) {
-        getMethod.getRoutes(new GetMethod.OnSuccesListener() {
+        getMethod.getRoutes(new GetMethod.OnSuccessListener() {
             @Override
             public void onFinished(JsonObject searchData, int statusCode) {
                 if (routesView != null) {
@@ -43,7 +43,7 @@ public class RoutesPresenterImpl implements Callback.presenterRoutes {
 
     @Override
     public void requestNear(String lat, String lon) {
-        getMethod.getNear(new GetMethod.OnSuccesListener() {
+        getMethod.getNear(new GetMethod.OnSuccessListener() {
             @Override
             public void onFinished(JsonObject searchData, int statusCode) {
                 if (routesView != null) {
@@ -59,6 +59,25 @@ public class RoutesPresenterImpl implements Callback.presenterRoutes {
 
             }
         }, lat, lon);
+    }
+
+    @Override
+    public void requestNearMyLocation(String pointX, String pointY) {
+        getMethod.getNearMyLocation(new GetMethod.OnSuccessArrayListener() {
+            @Override
+            public void onFinished(JsonArray searchData, int statusCode) {
+                if (routesView != null) {
+                    routesView.setDataNearViewMyLocation(searchData, statusCode);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                if (routesView != null) {
+                    routesView.onResponseNearMyLocationFailure(t);
+                }
+            }
+        }, pointX, pointY);
     }
 
 

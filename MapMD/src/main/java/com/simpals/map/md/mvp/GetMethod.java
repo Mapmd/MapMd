@@ -3,8 +3,6 @@ package com.simpals.map.md.mvp;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import org.json.JSONObject;
-
 import java.util.Map;
 
 public interface GetMethod {
@@ -13,9 +11,12 @@ public interface GetMethod {
 
         void onFailure(Throwable t);
     }
-    interface OnSuccesListener {
+    interface OnSuccessListener {
         void onFinished(JsonObject searchData, int statusCode);
-
+        void onFailure(Throwable t);
+    }
+    interface OnSuccessArrayListener {
+        void onFinished(JsonArray searchData, int statusCode);
         void onFailure(Throwable t);
     }
 
@@ -39,9 +40,10 @@ public interface GetMethod {
 
     void getSearch(OnFinishedListener onFinishedListener, String query);
 
-    void getRoutes(OnSuccesListener onRouteListener, String idCities);
+    void getRoutes(OnSuccessListener onRouteListener, String idCities);
 
-    void getNear(OnSuccesListener onNearListener, String lat, String lon);
+    void getNear(OnSuccessListener onNearListener, String lat, String lon);
+    void getNearMyLocation(OnSuccessArrayListener onSuccessArrayListener, String PointX, String PointY);
 
     void getPointItem(OnPointItemListener onFinishedListener, String CategoryId);
 

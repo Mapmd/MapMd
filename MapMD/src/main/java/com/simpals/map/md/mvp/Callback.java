@@ -18,6 +18,7 @@ public class Callback {
         void onDestroy();
         void requestRoutes(String cityId);
         void requestNear(String lat,String lon);
+        void requestNearMyLocation(String PointX,String PointY);
     }
 
 }
