@@ -113,7 +113,7 @@ public class QueryRoutes implements CallbackResponse.RoutesView {
     }
 
     public void setOnNearLocationListener(OnCallbackNearLocationArray mListener) {
-        this.mListenerLocationArray = mListener; //registerOnNearListener
+        this.mListenerLocationArray = mListener;
     }
 
     public interface OnCallbackRoutesResult {
