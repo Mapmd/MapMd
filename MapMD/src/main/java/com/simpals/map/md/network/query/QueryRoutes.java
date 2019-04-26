@@ -10,16 +10,21 @@ import com.simpals.map.md.mvp.routes.RoutesPresenterImpl;
 
 public class QueryRoutes implements CallbackResponse.RoutesView {
     private Callback.presenterRoutes presenter;
-    private OnCallbackResult mListener;
-    private OnCallbackResultArray mListenerArray;
+    private OnCallbackRoutesResult mListenerRoutes;
+    private OnCallbackNearResult mListenerNear;
+    private OnCallbackNearLocationArray mListenerLocationArray;
     private static String CHISINAU = "129991407";
 
-    public QueryRoutes(OnCallbackResult listener) {
-        this.mListener = listener;
+    public QueryRoutes(OnCallbackRoutesResult listener) {
+        this.mListenerRoutes = listener;
     }
 
-    public QueryRoutes(OnCallbackResultArray listener) {
-        this.mListenerArray = listener;
+    public QueryRoutes(OnCallbackNearResult listener) {
+        this.mListenerNear = listener;
+    }
+
+    public QueryRoutes(OnCallbackNearLocationArray listener) {
+        this.mListenerLocationArray = listener;
     }
 
 
@@ -59,51 +64,65 @@ public class QueryRoutes implements CallbackResponse.RoutesView {
 
     @Override
     public void setDataRoutesView(JsonObject data, int statusCode) {
-        if (mListener != null)
-            mListener.onSuccess(data, statusCode);
+        if (mListenerRoutes != null)
+            mListenerRoutes.onSuccess(data, statusCode);
     }
 
     @Override
     public void setDataNearView(JsonObject value, int statusCode) {
-        if (mListener != null)
-            mListener.onSuccess(value, statusCode);
+        if (mListenerNear != null)
+            mListenerNear.onSuccess(value, statusCode);
     }
 
     @Override
     public void setDataNearViewMyLocation(JsonArray data, int code) {
-        if (mListenerArray != null)
-            mListenerArray.onSuccess(data, code);
+        if (mListenerLocationArray != null)
+            mListenerLocationArray.onSuccess(data, code);
     }
 
     @Override
     public void onResponseRouteFailure(Throwable throwable) {
-        if (mListener != null)
-            mListener.onFailure(throwable);
+        if (mListenerRoutes != null)
+            mListenerRoutes.onFailure(throwable);
     }
 
     @Override
     public void onResponseNearFailure(Throwable throwable) {
-        if (mListener != null)
-            mListener.onFailure(throwable);
+        if (mListenerNear != null)
+            mListenerNear.onFailure(throwable);
     }
 
     @Override
     public void onResponseNearMyLocationFailure(Throwable throwable) {
-        if (mListenerArray != null)
-            mListenerArray.onFailure(throwable);
+        if (mListenerLocationArray != null)
+            mListenerLocationArray.onFailure(throwable);
     }
 
-    public void registerOnCategoryListener(OnCallbackResult mListener) {
-        this.mListener = mListener;
+    public void registerOnNearListener(OnCallbackNearResult mListener) {
+        this.mListenerNear = mListener;
     }
 
-    public interface OnCallbackResult {
+    public void registerOnNearListener(OnCallbackRoutesResult mListener) {
+        this.mListenerRoutes = mListener;
+    }
+
+    public void registerOnRoutesListener(OnCallbackNearLocationArray mListener) {
+        this.mListenerLocationArray = mListener;
+    }
+
+    public interface OnCallbackRoutesResult {
         void onSuccess(JsonObject result, int statusCode);
 
         void onFailure(Throwable throwable);
     }
 
-    public interface OnCallbackResultArray {
+    public interface OnCallbackNearResult {
+        void onSuccess(JsonObject result, int statusCode);
+
+        void onFailure(Throwable throwable);
+    }
+
+    public interface OnCallbackNearLocationArray {
         void onSuccess(JsonArray result, int statusCode);
 
         void onFailure(Throwable throwable);
