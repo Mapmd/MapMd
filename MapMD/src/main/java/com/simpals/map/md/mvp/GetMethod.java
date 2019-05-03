@@ -6,17 +6,22 @@ import com.google.gson.JsonObject;
 import java.util.Map;
 
 public interface GetMethod {
+
     interface OnFinishedListener {
         void onFinished(JsonObject searchData);
 
         void onFailure(Throwable t);
     }
+
     interface OnSuccessListener {
         void onFinished(JsonObject searchData, int statusCode);
+
         void onFailure(Throwable t);
     }
+
     interface OnSuccessArrayListener {
         void onFinished(JsonArray searchData, int statusCode);
+
         void onFailure(Throwable t);
     }
 
@@ -42,7 +47,10 @@ public interface GetMethod {
 
     void getRoutes(OnSuccessListener onRouteListener, String idCities);
 
+    void getRouteById(OnSuccessListener onRouteListener, String idRoute);
+
     void getNear(OnSuccessListener onNearListener, String lat, String lon);
+
     void getNearMyLocation(OnSuccessArrayListener onSuccessArrayListener, String PointX, String PointY);
 
     void getPointItem(OnPointItemListener onFinishedListener, String CategoryId);

@@ -21,4 +21,9 @@ public class Callback {
         void requestNearMyLocation(String PointX,String PointY);
     }
 
+    public interface presenterRouteGeo{
+        void onDestroy();
+        void requestRouteById(String cityId);
+    }
+
 }

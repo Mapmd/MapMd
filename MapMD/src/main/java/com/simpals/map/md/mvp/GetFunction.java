@@ -56,6 +56,28 @@ public class GetFunction implements GetMethod {
     }
 
     @Override
+    public void getRouteById(OnSuccessListener onRouteListener, String idRoute) {
+        ApiMapMd service = RetrofitInstance.getRetrofitInstance().create(ApiMapMd.class);
+        call = service.getRouteById(idRoute);
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
+                if (onRouteListener != null) {
+                    onRouteListener.onFinished(response.body(), response.code());
+                }
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
+                if (onRouteListener != null) {
+                    onRouteListener.onFailure(t);
+                }
+            }
+        });
+    }
+
+    @Override
     public void getNear(OnSuccessListener onNearListener, String lat, String lon) {
         ApiMapMd service = RetrofitInstance.getRetrofitInstance().create(ApiMapMd.class);
         call = service.getNear(lat, lon);
