@@ -3,7 +3,7 @@
 <a href="https://play.google.com/store/apps/details?id=md.point.map">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Play store" height="90"></a>
 
-Current Release: **0.0.15 (2019)**
+Current Release: **0.0.21 (2019)**
 
 **Gradle dependency**
 ```groovy
