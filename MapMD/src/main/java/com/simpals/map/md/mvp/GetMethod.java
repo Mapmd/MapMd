@@ -49,6 +49,8 @@ public interface GetMethod {
 
     void getRouteById(OnSuccessListener onRouteListener, String idRoute);
 
+    void getDrive(OnSuccessListener onRouteListener, String type, String coordinates);
+
     void getNear(OnSuccessListener onNearListener, String lat, String lon);
 
     void getNearMyLocation(OnSuccessArrayListener onSuccessArrayListener, String PointX, String PointY);

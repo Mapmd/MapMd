@@ -41,4 +41,10 @@ public class CallbackResponse {
 
         void onResponseRouteGeoFailure(Throwable throwable);
     }
+
+    public interface DriveView {
+        void setDataDriveView(JsonObject data, int statusCode);
+
+        void onResponseDriveFailure(Throwable throwable);
+    }
 }

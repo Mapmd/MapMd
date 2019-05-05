@@ -12,6 +12,7 @@ import com.simpals.map.md.MapMd;
 import com.simpals.map.md.MapMdView;
 import com.simpals.map.md.listener.OnMapMdReadyCallback;
 import com.simpals.map.md.network.query.QueryCategory;
+import com.simpals.map.md.network.query.QueryDrive;
 import com.simpals.map.md.network.query.QueryRoutes;
 import com.simpals.map.md.network.query.QueryRoutesById;
 import com.simpals.map.md.network.query.QuerySearch;
@@ -23,7 +24,6 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallback {
     private MapMdView mapView;
-    // MapView mapView;
     private MapMd mapMd;
 
     @Override
@@ -31,28 +31,9 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
         super.onCreate(savedInstanceState);
         MapMd.getInstanceMap(this, "2582e284-1087-421c-baaa-94020703c462");
         setContentView(R.layout.activity_main);
-        mapView = (MapMdView) findViewById(R.id.mapView);
+        mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.initMap(this, this);
-      /*  mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(@NonNull MapboxMap mapboxMap) {
-                // mapboxMap.setStyle(new Style.Builder().fromUrl("asset://local_style_file.json")); https://i.simpalsmedia.com/tiles/styles/map/style.json
-                mapboxMap.setStyle(new Style.Builder().fromUrl("http://192.168.1.15:8211/tiles/styles/map/style.json"), new Style.OnStyleLoaded() {
-                    @Override
-                    public void onStyleLoaded(@NonNull Style style) {
-
-                        VectorSource vectorSource = new VectorSource(
-                                "MapMd",
-                                "https://i.simpalsmedia.com/tiles/styles/map/style.json");
-                        style.addSource(vectorSource);
-
-
-                    }
-                });
-
-            }
-        });*/
 
         /* new MainPresenterImpl(this, new GetNoticeIntractorImpl()).requestDataFromServer();*/
         // presenter.requestDataFromServer();
@@ -61,7 +42,8 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
        // getAllCategory();
         //getItemCategory("179");
        // getRoute();
-        getRouteById("52");
+        //getRouteById("52");
+        getDrive("28.847962,47.0441176;28.846471,46.993042");
     }
 
     private void getRoute(){
@@ -92,6 +74,23 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
         });
         q.getRoute(idRoute);
     }
+
+    private void getDrive( String coordinates){
+        QueryDrive q = new QueryDrive(new QueryDrive.OnCallbackDriveResult() {
+            @Override
+            public void onSuccess(JsonObject result, int statusCode) {
+
+                Log.e("onSuccess", result.toString());
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                Log.e("onFailure", throwable.toString());
+            }
+        });
+        q.getDrive("driving",coordinates);
+    }
+
     private void searchLocation() {
         QuerySearch search = new QuerySearch(new QuerySearch.OnCallbackLocation() {
             @Override

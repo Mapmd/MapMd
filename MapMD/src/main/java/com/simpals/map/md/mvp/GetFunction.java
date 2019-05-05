@@ -78,6 +78,28 @@ public class GetFunction implements GetMethod {
     }
 
     @Override
+    public void getDrive(OnSuccessListener onRouteListener, String type,String coordinates) {
+        ApiMapMd service = RetrofitInstance.getRetrofitInstance().create(ApiMapMd.class);
+        call = service.getDriving("driving",coordinates);
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
+                if (onRouteListener != null) {
+                    onRouteListener.onFinished(response.body(), response.code());
+                }
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
+                if (onRouteListener != null) {
+                    onRouteListener.onFailure(t);
+                }
+            }
+        });
+    }
+
+    @Override
     public void getNear(OnSuccessListener onNearListener, String lat, String lon) {
         ApiMapMd service = RetrofitInstance.getRetrofitInstance().create(ApiMapMd.class);
         call = service.getNear(lat, lon);
@@ -102,7 +124,7 @@ public class GetFunction implements GetMethod {
     @Override
     public void getNearMyLocation(OnSuccessArrayListener onSuccessArrayListener, String pointX, String pointY) {
         ApiMapMd service = RetrofitInstance.getRetrofitInstance().create(ApiMapMd.class);
-        Call<JsonArray> call = service.getRouteMyLocation(pointX,pointY);
+        Call<JsonArray> call = service.getRouteMyLocation(pointX, pointY);
         call.enqueue(new Callback<JsonArray>() {
             @Override
             public void onResponse(@NonNull Call<JsonArray> call, @NonNull Response<JsonArray> response) {

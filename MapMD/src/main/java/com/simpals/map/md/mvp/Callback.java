@@ -25,5 +25,9 @@ public class Callback {
         void onDestroy();
         void requestRouteById(String cityId);
     }
+    public interface presenterDrive{
+        void onDestroy();
+        void requestDrive(String type,String coordinate);
+    }
 
 }
