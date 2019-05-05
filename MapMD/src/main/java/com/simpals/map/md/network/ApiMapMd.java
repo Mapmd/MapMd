@@ -49,7 +49,7 @@ public interface ApiMapMd {
     @GET(GET_ROUTE_BY_ID)
     Call<JsonObject> getRouteById(@Query("rid") String idRout);
 
-    @GET("routing/route/v1/{type}/{coordinate}?overview=false&alternatives=true&steps=true")
+    @GET("routing/route/v1/{type}/{coordinate}?geometries=polyline&overview=false&alternatives=true&steps=true")
     Call<JsonObject> getDriving(@Path("type") String type ,@Path("coordinate") String coordinates);
 
 }
