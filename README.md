@@ -2,11 +2,11 @@
 
 <a href="https://play.google.com/store/apps/details?id=md.point.map">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Play store" height="90"></a>
+</br>
 Copyright (c) 2019 Simpals
+Current Release: **0.0.25 (2019)**
 
 More information about the API can be found on the Map Portal's [API page](https://map.md/api/documentation/).
-
-Current Release: **0.0.25 (2019)**
 
 You have two ways to set up your app to use the MapMd SDK:
 - Setting project 
