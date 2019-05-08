@@ -2,6 +2,11 @@
 
 <a href="https://play.google.com/store/apps/details?id=md.point.map">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Play store" height="90"></a>
+Copyright (c) 2019 Simpals
+
+This repository holds a series of Java-based projects using the **MapMd SDK for Android**. More information about the API can be found on the Map Portal's [API](https://map.md/api/documentation/) page.
+
+This set of individual, use-case based projects is designed to be cloned by developers for their own use.
 
 Current Release: **0.0.21 (2019)**
 
