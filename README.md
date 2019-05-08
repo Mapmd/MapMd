@@ -2,6 +2,7 @@
 
 <a href="https://play.google.com/store/apps/details?id=md.point.map">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Play store" height="90"></a>
+
 </br>
 Copyright (c) 2019 Simpals </br>
 
