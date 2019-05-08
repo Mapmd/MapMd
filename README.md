@@ -13,8 +13,10 @@ You have two ways to set up your app to use the MapMd SDK:
 - Setting up your project with the MapMd SDK
 
 **Setting project **
+
 1.Open [Link](https://map.md/ru/api/)
 2. Click Button "Get Code"
+<br>
 **Android Studio Setup**
 
 **Gradle dependency**
