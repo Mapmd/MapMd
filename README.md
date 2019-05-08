@@ -23,6 +23,7 @@ You have two ways to set up your app to use the MapMd SDK:
 1. Go to Android Studio | New Project.
 2. Select API 16: Android 4.1 or higher and create your new project.
 3.After you create a new project, open build.gradle and do the following:
+
 **Gradle dependency**
 ```groovy
 allprojects {
