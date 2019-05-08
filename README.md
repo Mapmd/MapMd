@@ -3,7 +3,7 @@
 <a href="https://play.google.com/store/apps/details?id=md.point.map">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Play store" height="90"></a>
 </br>
-Copyright (c) 2019 Simpals
+Copyright (c) 2019 Simpals</br>
 Current Release: **0.0.25 (2019)**
 
 More information about the API can be found on the Map Portal's [API page](https://map.md/api/documentation/).
