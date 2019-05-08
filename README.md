@@ -8,6 +8,15 @@ More information about the API can be found on the Map Portal's [API page](https
 
 Current Release: **0.0.21 (2019)**
 
+You have two ways to set up your app to use the MapMd SDK:
+- Setting project 
+- Setting up your project with the MapMd SDK
+
+**Setting project **
+1.Open [Link](https://map.md/ru/api/)
+2. Click Button "Get Code"
+**Android Studio Setup**
+
 **Gradle dependency**
 ```groovy
 allprojects {
