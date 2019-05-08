@@ -6,7 +6,7 @@ Copyright (c) 2019 Simpals
 
 More information about the API can be found on the Map Portal's [API page](https://map.md/api/documentation/).
 
-Current Release: **0.0.21 (2019)**
+Current Release: **0.0.25 (2019)**
 
 You have two ways to set up your app to use the MapMd SDK:
 - Setting project 
