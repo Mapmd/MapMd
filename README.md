@@ -21,10 +21,10 @@ You have two ways to set up your app to use the MapMd SDK:
 
 **Android Studio Setup**
 1. Go to Android Studio | New Project.<br />
-2. Select API 16: Android 4.1 or higher and create your new project.<br />
+2. Select API 17: Android 4.1 or higher and create your new project.<br />
 3. After you create a new project, open build.gradle and do the following:<br />
 
-**Gradle dependency**
+>**Gradle dependency**
 ```groovy
 allprojects {
     repositories {
@@ -39,7 +39,7 @@ dependencies {
 Be sure to replace `<VERSION>` with the last release version above.
 
 
-**Platform or API Level (API level 16 = Platform 4.1)**
+**Platform or API Level (API level 17 = Platform 4.1)**
 ```xml
 <platform>17</platform>
 ```
