@@ -39,14 +39,15 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
         // presenter.requestDataFromServer();
         // searchRequest();
         // searchLocation();
-       // getAllCategory();
+        //getAllCategory();
         //getItemCategory("179");
-       // getRoute();
+        // getRoute();
         //getRouteById("52");
         //getDrive("28.847962,47.0441176;28.846471,46.993042");
+        getGeopoint(47.024775047203576,28.819843371108504);
     }
 
-    private void getRoute(){
+    private void getRoute() {
         QueryRoutes q = new QueryRoutes(new QueryRoutes.OnCallbackRoutesResult() {
             @Override
             public void onSuccess(JsonObject result, int statusCode) {
@@ -60,7 +61,22 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
         });
         q.getRoute(null);
     }
-    private void getRouteById( String idRoute){
+    private void getGeopoint(double lat,double lon) {
+        QueryRoutes q = new QueryRoutes(new QueryRoutes.OnCallbackNearResult() {
+            @Override
+            public void onSuccess(JsonObject result, int statusCode) {
+                Log.e("onSuccess", result.toString());
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                Log.e("onFailure", throwable.toString());
+            }
+        });
+        q.getNear(lat,lon);
+    }
+
+    private void getRouteById(String idRoute) {
         QueryRoutesById q = new QueryRoutesById(new QueryRoutesById.OnCallbackRouteGeoResult() {
             @Override
             public void onSuccess(JsonObject result, int statusCode) {
@@ -72,10 +88,11 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
                 Log.e("onFailure", throwable.toString());
             }
         });
+
         q.getRoute(idRoute);
     }
 
-    private void getDrive( String coordinates){
+    private void getDrive(String coordinates) {
         QueryDrive q = new QueryDrive(new QueryDrive.OnCallbackDriveResult() {
             @Override
             public void onSuccess(JsonObject result, int statusCode) {
@@ -88,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
                 Log.e("onFailure", throwable.toString());
             }
         });
-        q.getDrive("driving",coordinates);
+        q.getDrive("driving", coordinates);
     }
 
     private void searchLocation() {
@@ -105,15 +122,19 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
         });
         Map m = new HashMap<>();
         m.put("id", "3157469661");
+        //get_street?number=2&id=30622244
+        //get_object?id=144655
+        //city?id=144655
         search.getLocationRequest("city", m);
+
     }
 
     private void getAllCategory() {
-        QueryCategory search = new QueryCategory(new QueryCategory.OnCallbackResult() {
+        QueryCategory queryCategory = new QueryCategory(new QueryCategory.OnCallbackResult() {
 
             @Override
             public void onSuccess(JsonArray result, int statusCode) {
-                Log.d("succes " + statusCode, result.toString());
+                //Log.d("succes " + statusCode, result.toString());
             }
 
             @Override
@@ -122,8 +143,22 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
             }
         });
 
-        search.getAllCategory();
+        queryCategory.getAllCategory();
+
+       /* queryCategory.registerOnCategoryListener( new QueryCategory.OnCallbackResult(){
+
+            @Override
+            public void onSuccess(JsonArray result, int statusCode) {
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+
+            }
+        });*/
     }
+
     private void getItemCategory(String id) {
         QueryCategory search = new QueryCategory(new QueryCategory.OnCallbackResultItem() {
 
@@ -202,8 +237,8 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
 
     @Override
     public void onMapReady(@NonNull MapboxMap mapMd) {
-
-       // mapView.setStyleSatellite();
+        mapView.setLogoTopLeft();
+        // mapView.setStyleSatellite();
 
     }
 
