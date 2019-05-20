@@ -13,5 +13,6 @@ public class Urls {
     public static final String GET_ROUTES = "companies/webmap/routes";
     public static final String CITY_LIST = "companies/webmap/list_cities";
     public static final String GET_NEAR = "companies/webmap/near";
+    public static final String GET_NEAR_Routes = "companies/webmap/near_routes";
     public static final String GET_ROUTE_BY_ID = "companies/webmap/route";
 }

@@ -15,6 +15,7 @@ import retrofit2.http.QueryMap;
 
 import static com.simpals.map.md.utils.Urls.ALLCATEGORIES;
 import static com.simpals.map.md.utils.Urls.GET_NEAR;
+import static com.simpals.map.md.utils.Urls.GET_NEAR_Routes;
 import static com.simpals.map.md.utils.Urls.GET_POINTS_FOR_CATEGORY;
 import static com.simpals.map.md.utils.Urls.GET_ROUTES;
 import static com.simpals.map.md.utils.Urls.GET_ROUTE_BY_ID;
@@ -43,7 +44,7 @@ public interface ApiMapMd {
     @GET(GET_NEAR)
     Call<JsonObject> getNear(@Query("lat") String lat, @Query("lon") String lon);
 
-    @GET("ru/map/webmap/near_routes")
+    @GET(GET_NEAR_Routes)
     Call<JsonArray> getRouteMyLocation(@Query("x") String x, @Query("y") String y); //x=47.0229,28.8353,y=47.0229,28.8353
 
     @GET(GET_ROUTE_BY_ID)
