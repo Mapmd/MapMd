@@ -78,9 +78,9 @@ public class GetFunction implements GetMethod {
     }
 
     @Override
-    public void getDrive(OnSuccessListener onRouteListener, String type,String coordinates) {
+    public void getDrive(OnSuccessListener onRouteListener, String type, String coordinates) {
         ApiMapMd service = RetrofitInstance.getRetrofitInstance().create(ApiMapMd.class);
-        call = service.getDriving("driving",coordinates);
+        call = service.getDriving("driving", coordinates);
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
@@ -159,7 +159,8 @@ public class GetFunction implements GetMethod {
 
             @Override
             public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
-
+                if (onFinishedListener != null)
+                    onFinishedListener.onFailure(t);
             }
         });
     }

@@ -39,7 +39,6 @@ public interface GetMethod {
 
     interface OnPointItemListener {
         void onFinished(JsonObject searchData, int statusCode);
-
         void onFailure(Throwable t);
     }
 

@@ -40,11 +40,11 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
         // searchRequest();
         // searchLocation();
         //getAllCategory();
-        //getItemCategory("179");
+        getItemCategory("179");
         // getRoute();
         //getRouteById("52");
         //getDrive("28.847962,47.0441176;28.846471,46.993042");
-        getGeopoint(47.024775047203576,28.819843371108504);
+       // getGeopoint(47.024775047203576,28.819843371108504);
     }
 
     private void getRoute() {
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
 
             @Override
             public void onFailure(Throwable throwable) {
-                Log.e("succes ", throwable.toString());
+                Log.e("error ", throwable.toString());
             }
         });
 
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
 
             @Override
             public void onFailure(Throwable throwable) {
-                Log.e("succes ", throwable.toString());
+                Log.e("error ", throwable.toString());
             }
         });
 
