@@ -59,7 +59,7 @@ public class QueryRoutes implements CallbackResponse.RoutesView {
             presenter = new RoutesPresenterImpl(this, new GetFunction());
             presenter.requestNearMyLocation(pointX, pointY);
         } else {
-            presenter.requestNear(pointX, pointY);
+            presenter.requestNearMyLocation(pointX, pointY);
         }
     }
 
