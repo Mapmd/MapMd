@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
         // searchRequest();
         // searchLocation();
         //getAllCategory();
-        getItemCategory("179");
+       // getItemCategory("179");
         // getRoute();
         //getRouteById("52");
         //getDrive("28.847962,47.0441176;28.846471,46.993042");
