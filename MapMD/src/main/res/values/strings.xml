@@ -3,5 +3,6 @@
     <string name="tag_request">Authorization</string>
     <string name="pwd">Authorization</string>
     <string name="url_repo">https://i.simpalsmedia.com/tiles/styles/map/style.json</string>
+   <!-- <string name="url_repo">http://192.168.1.31:2580/styles/map/style.json</string>-->
     <string name="url_repo_satelite">https://i.simpalsmedia.com/tiles/styles/satelite/style.json</string>
 </resources>

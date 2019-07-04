@@ -2,6 +2,7 @@ package com.simpals.map.md.mvp;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import org.json.JSONObject;
 
@@ -31,7 +32,7 @@ public class CallbackResponse {
 
         void onResponseRouteFailure(Throwable throwable);
 
-        void onResponseNearFailure(Throwable throwable);
+        void onResponseNearFailure(Throwable throwable, LatLng latLng);
 
         void onResponseNearMyLocationFailure(Throwable throwable);
     }

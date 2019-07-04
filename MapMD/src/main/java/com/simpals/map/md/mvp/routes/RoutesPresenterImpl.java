@@ -2,6 +2,7 @@ package com.simpals.map.md.mvp.routes;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.simpals.map.md.mvp.Callback;
 import com.simpals.map.md.mvp.CallbackResponse;
 import com.simpals.map.md.mvp.GetMethod;
@@ -54,7 +55,12 @@ public class RoutesPresenterImpl implements Callback.presenterRoutes {
             @Override
             public void onFailure(Throwable t) {
                 if (routesView != null) {
-                    routesView.onResponseNearFailure(t);
+                    if ((lat != null && lon != null) || !lat.isEmpty() && !lon.isEmpty()) {
+                        double lat1 = Double.parseDouble(lat);
+                        double lon1 = Double.parseDouble(lon);
+                        LatLng latLng = new LatLng(lat1, lon1);
+                        routesView.onResponseNearFailure(t, latLng);
+                    }else routesView.onResponseNearFailure(t, null);
                 }
 
             }

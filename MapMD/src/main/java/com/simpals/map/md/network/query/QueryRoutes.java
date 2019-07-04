@@ -4,6 +4,7 @@ import android.app.DownloadManager;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.simpals.map.md.mvp.Callback;
 import com.simpals.map.md.mvp.CallbackResponse;
 import com.simpals.map.md.mvp.GetFunction;
@@ -93,9 +94,9 @@ public class QueryRoutes implements CallbackResponse.RoutesView {
     }
 
     @Override
-    public void onResponseNearFailure(Throwable throwable) {
+    public void onResponseNearFailure(Throwable throwable,LatLng latLng) {
         if (mListenerNear != null)
-            mListenerNear.onFailure(throwable);
+            mListenerNear.onFailure(throwable,latLng);
     }
 
     @Override
@@ -124,8 +125,7 @@ public class QueryRoutes implements CallbackResponse.RoutesView {
 
     public interface OnCallbackNearResult {
         void onSuccess(JsonObject result, int statusCode);
-
-        void onFailure(Throwable throwable);
+        void onFailure(Throwable throwable, LatLng latLng);
     }
 
     public interface OnCallbackNearLocationArray {
