@@ -24,6 +24,7 @@ allprojects {
             url "https://jitpack.io"
             credentials { username authToken }
         }
+        maven { url 'https://mapbox.bintray.com/mapbox' }
         
     }
 }
