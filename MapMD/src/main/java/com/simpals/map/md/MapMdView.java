@@ -114,11 +114,11 @@ public class MapMdView extends MapView implements OnMapReadyCallback {
 
     }
 
-    public void setStyleSatellite(){
-        mapMd.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo_satelite)));
+    public void setStyleSatellite(Style.OnStyleLoaded style){
+        mapMd.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo_satelite)),style);
     }
-    public void setStyleMapMd(){
-        mapMd.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo)));
+    public void setStyleMapMd(Style.OnStyleLoaded style){
+        mapMd.setStyle(new Style.Builder().fromUrl(getApplicationContext().getString(R.string.url_repo)),style);
     }
 
     private void setGravity(int gravity) {
