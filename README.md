@@ -6,7 +6,7 @@
 </br>
 Copyright (c) 2019 Simpals </br>
 
-Current Release: **0.1.3 (2019)**
+Current Release: **0.2.1 (2019)**
 
 More information about the API can be found on the Map Portal's [API page](https://map.md/api/documentation/).
 
