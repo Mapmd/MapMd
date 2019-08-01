@@ -26,11 +26,11 @@ public class RetrofitInstance {
     }
 
     private static OkHttpClient getClient() {
-         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        /* HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);*/
         return new OkHttpClient.Builder()
                 .addInterceptor(new BasicAuthInterceptor(Mapbox.getAccessToken(), ""))
-                .addInterceptor(interceptor)
+              //  .addInterceptor(interceptor)
                 .build();
     }
 
