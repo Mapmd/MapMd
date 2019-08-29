@@ -1,6 +1,6 @@
 package com.simpals.map.md.listener;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 
