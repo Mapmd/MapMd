@@ -35,7 +35,7 @@ allprojects {
 }
 
 dependencies {
-    compile 'com.github.Mapmd:MapMd:<VERSION>'
+    implementation 'com.github.Mapmd:MapMd:<VERSION>'
 }
 ```
 Be sure to replace `<VERSION>` with the last release version above.
