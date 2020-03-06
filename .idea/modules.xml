@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MapMD/MapMD.iml" filepath="$PROJECT_DIR$/MapMD/MapMD.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MapMdExemple.iml" filepath="$PROJECT_DIR$/MapMdExemple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MapMd.iml" filepath="$PROJECT_DIR$/MapMd.iml" group="MapMd" />
+      <module fileurl="file://$PROJECT_DIR$/MapMD/MapMd-MapMD.iml" filepath="$PROJECT_DIR$/MapMD/MapMd-MapMD.iml" group="MapMd/MapMD" />
+      <module fileurl="file://$PROJECT_DIR$/app/MapMd-app.iml" filepath="$PROJECT_DIR$/app/MapMd-app.iml" group="MapMd/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

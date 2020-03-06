@@ -1,13 +1,16 @@
 package com.simpals.map.md.exemple;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.mapboxsdk.maps.Style;
 import com.simpals.map.md.MapMd;
 import com.simpals.map.md.MapMdView;
 import com.simpals.map.md.listener.OnMapMdReadyCallback;
@@ -16,8 +19,6 @@ import com.simpals.map.md.network.query.QueryDrive;
 import com.simpals.map.md.network.query.QueryRoutes;
 import com.simpals.map.md.network.query.QueryRoutesById;
 import com.simpals.map.md.network.query.QuerySearch;
-
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +35,17 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.initMap(this, this);
+        new QueryRoutes(new QueryRoutes.OnCallbackNearResult() {
+            @Override
+            public void onSuccess(JsonObject result, int statusCode) {
+                result.toString();
+            }
+
+            @Override
+            public void onFailure(Throwable throwable, LatLng latLng) {
+                throwable.getMessage();
+            }
+        }).getNear(47.046952, 28.849717);
 
         /* new MainPresenterImpl(this, new GetNoticeIntractorImpl()).requestDataFromServer();*/
         // presenter.requestDataFromServer();
@@ -69,8 +81,8 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
             }
 
             @Override
-            public void onFailure(Throwable throwable) {
-                Log.e("onFailure", throwable.toString());
+            public void onFailure(Throwable throwable, LatLng latLng) {
+
             }
         });
         q.getNear(lat,lon);
@@ -134,7 +146,6 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
 
             @Override
             public void onSuccess(JsonArray result, int statusCode) {
-                //Log.d("succes " + statusCode, result.toString());
             }
 
             @Override
@@ -144,19 +155,6 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
         });
 
         queryCategory.getAllCategory();
-
-       /* queryCategory.registerOnCategoryListener( new QueryCategory.OnCallbackResult(){
-
-            @Override
-            public void onSuccess(JsonArray result, int statusCode) {
-
-            }
-
-            @Override
-            public void onFailure(Throwable throwable) {
-
-            }
-        });*/
     }
 
     private void getItemCategory(String id) {
@@ -190,7 +188,6 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
         });
 
         search.sendRequest("daci");
-        // search.onCancelRequest();
     }
 
     @Override
@@ -238,19 +235,9 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
     @Override
     public void onMapReady(@NonNull MapboxMap mapMd) {
         mapView.setLogoTopLeft();
-        // mapView.setStyleSatellite();
+        mapMd.getStyle(style -> {
 
+        });
     }
 
-    /*private void getSearch(){
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel.class);
-        viewModel.loginResponse().observe(this, new Observer<ApiResponse>() {
-            @Override
-            public void onChanged(@Nullable ApiResponse apiResponse) {
-                consumeResponse(apiResponse);
-            }
-        });
-
-        viewModel.hitLoginApi(phoneNo.getText().toString(), password.getText().toString());
-    }*/
 }

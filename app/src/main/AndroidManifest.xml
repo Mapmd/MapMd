@@ -4,6 +4,7 @@
     package="com.simpals.map.md.exemple">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
 
         android:allowBackup="true"
