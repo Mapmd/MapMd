@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 android {
-    buildToolsVersion '29.0.2'
+    buildToolsVersion '30.0.3'
     compileSdkVersion 30
     defaultConfig {
         minSdkVersion 17
@@ -22,6 +22,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        checkReleaseBuilds true
+        abortOnError false
     }
 }
 
@@ -43,4 +47,5 @@ dependencies {
         exclude group: 'androidx.core', module: 'core'
     }
     implementation 'com.jakewharton.timber:timber:5.0.1'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 }
