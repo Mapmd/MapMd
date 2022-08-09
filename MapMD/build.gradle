@@ -38,8 +38,8 @@ dependencies {
 
     /*MapBox*/
     api 'com.mapbox.mapboxsdk:mapbox-android-sdk:8.5.0'
-    api'com.mapbox.mapboxsdk:mapbox-android-navigation:0.41.0'
-    api'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.41.0'
+//    api'com.mapbox.mapboxsdk:mapbox-android-navigation:0.41.0'
+//    api'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.41.0'
     api 'com.mapbox.mapboxsdk:mapbox-android-core:1.3.0'
 
 //    api 'org.maplibre.gl:android-sdk:9.4.0'
