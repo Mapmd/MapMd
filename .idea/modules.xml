@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MapMD/MapMD.iml" filepath="$PROJECT_DIR$/MapMD/MapMD.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MapMd.iml" filepath="$PROJECT_DIR$/MapMd.iml" group="MapMd" />
-      <module fileurl="file://$PROJECT_DIR$/MapMD/MapMd-MapMD.iml" filepath="$PROJECT_DIR$/MapMD/MapMd-MapMD.iml" group="MapMd/MapMD" />
-      <module fileurl="file://$PROJECT_DIR$/app/MapMd-app.iml" filepath="$PROJECT_DIR$/app/MapMd-app.iml" group="MapMd/app" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MapMd.iml" filepath="$PROJECT_DIR$/.idea/modules/MapMd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MapMD/MapMd.MapMD.iml" filepath="$PROJECT_DIR$/.idea/modules/MapMD/MapMd.MapMD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MapMD/MapMd.MapMD.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/MapMD/MapMd.MapMD.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MapMD/MapMd.MapMD.main.iml" filepath="$PROJECT_DIR$/.idea/modules/MapMD/MapMd.MapMD.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MapMD/MapMd.MapMD.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/MapMD/MapMd.MapMD.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MapMd.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MapMd.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MapMd.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MapMd.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MapMd.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MapMd.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MapMd.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MapMd.app.unitTest.iml" />
     </modules>
   </component>
 </project>

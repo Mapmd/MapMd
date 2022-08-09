@@ -13,10 +13,10 @@ import com.mapbox.mapboxsdk.maps.Style;
 import com.simpals.map.md.listener.OnMapMdReadyCallback;
 import com.simpals.map.md.utils.MapGravity;
 
-import timber.log.Timber;
-
 import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
 import static com.simpals.map.md.utils.StaticsFunctions.MOLDOVABOUNDS;
+
+import timber.log.Timber;
 
 public class MapMdView extends MapView implements OnMapReadyCallback {
     //  private MapboxMap mMapboxMap = null;

@@ -10,7 +10,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
-import com.mapbox.mapboxsdk.maps.Style;
 import com.simpals.map.md.MapMd;
 import com.simpals.map.md.MapMdView;
 import com.simpals.map.md.listener.OnMapMdReadyCallback;
@@ -47,16 +46,16 @@ public class MainActivity extends AppCompatActivity implements OnMapMdReadyCallb
             }
         }).getNear(47.046952, 28.849717);
 
-        /* new MainPresenterImpl(this, new GetNoticeIntractorImpl()).requestDataFromServer();*/
-        // presenter.requestDataFromServer();
-        // searchRequest();
-        // searchLocation();
-        //getAllCategory();
-       // getItemCategory("179");
-        // getRoute();
-        //getRouteById("52");
-       // getDrive("28.847962,47.0441176;28.846471,46.993042");
-       // getGeopoint(47.024775047203576,28.819843371108504);
+//        new MainPresenterImpl(this, new GetNoticeIntractorImpl()).requestDataFromServer();
+//         presenter.requestDataFromServer();
+//         searchRequest();
+//         searchLocation();
+//        getAllCategory();
+//        getItemCategory("179");
+//         getRoute();
+//        getRouteById("52");
+//        getDrive("28.847962,47.0441176;28.846471,46.993042");
+//        getGeopoint(47.024775047203576,28.819843371108504);
     }
 
     private void getRoute() {
